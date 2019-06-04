@@ -1,0 +1,24 @@
+{
+    "name"           : "onwords",
+    "version"        : "1.0.0",
+    "description"    : "onwords website",
+    "private"        : true,
+    "repository"     : "https://github.com/zenwork/onwords.git",
+    "author"         : "florian@hehlen.name",
+    "license"        : "MIT",
+    "scripts"        : {
+        "build": "webpack --config webpack.config.js"
+    },
+    "dependencies"   : {
+        "@babel/preset-typescript": "^7.3.3",
+        "webpack"                 : "^4.33.0",
+        "webpack-cli"             : "^3.3.2"
+    },
+    "devDependencies": {
+        "@babel/core"                      : "^7.4.5",
+        "@babel/preset-env"                : "^7.4.5",
+        "@babel/plugin-proposal-decorators": "^7.4.4",
+        "babel-loader"                     : "^8.0.6",
+        "typescript"                       : "^3.5.1"
+    }
+}
