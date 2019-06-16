@@ -123,3 +123,6 @@ typings/
 *.tar.gz
 *.rar
 hs_err_pid*
+
+# Project exclude paths
+/dist/
