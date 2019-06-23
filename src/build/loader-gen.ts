@@ -4,37 +4,12 @@ import * as fs from "fs";
 
 const recursive = require("recursive-readdir");
 
-const header = '// *****************************\n// Generated code... DO NOT EDIT\n// *****************************\nconst components = {};\n\n';
-
-// language=JavaScript 1.7
-const footer =
-    `
-  function load(k, components) {
-    console.debug(\`loading \${k}\`);
-    return components[k]().then(() => console.debug(\`loaded \${k}\`));
-  }
-
-  export const Loader = {
-    load: {
-      async initial() {
-        return Promise.all([load('OwHeader', components)]);
-      },
-      async all() {
-        let loading = [];
-        Object.keys(components).map((k) => {
-          loading.push(load(k, components));
-        });
-        return Promise.all(loading);
-      },
-    },
-  };
-`;
-
-let path = './src/';
-let options: ParserOptions = {
-  // parse in strict mode and allow module declarations
+const template = fs.readFileSync('./src/build/template.ts', 'utf8');
+const header = template.substr(0, template.indexOf('// GEN-CODE'));
+const footer = template.substr(template.indexOf('// GEN-CODE') + 12);
+const path = './src/';
+const options: ParserOptions = {
   sourceType: "module",
-
   plugins: [
     "typescript",
     "asyncGenerators",
@@ -46,18 +21,38 @@ let options: ParserOptions = {
   ]
 };
 
-function createLoader(f, declaration): string {
-  const fullPath = './' + f.substr(f.indexOf('src/') + 4);
-  let name = f.substr(f.lastIndexOf('/') + 1);
-  const chunkName = name.substr(0, name.indexOf('.'));
-  const className = declaration.id.name;
-  if (className !== 'OwShell') {
-    console.log(`created:${chunkName}`);
-    return `components['${className}'] = async () =>\n  await import(/* webpackChunkName: "${chunkName}" */'${fullPath}')\n    .then((scope) => new scope.${className}());\n\n`;
+recursive(path, function (err, files) {
+  const promises = [];
+  processFiles(files, promises);
+  waitFor(promises);
+});
 
-  }
-  return '';
+function processFiles(files, promises) {
+  files
+    .filter(f => {
+      if (f.indexOf('.ts') > 0) return f
+    })
+    .map(f => {
+      const data = fs.readFileSync(f, 'utf8');
+
+      promises.push(new Promise<string>((resolve) => resolve(analyze(data, f))));
+    });
 }
+
+function waitFor(promises) {
+  Promise
+    .all(promises)
+    .then((loaderChunks: Array<Promise<string>>) => {
+      console.log('finished');
+      let file = header;
+      loaderChunks.sort((chunkA, chunkB) => chunkA.toString().localeCompare(chunkB.toString())).map(chunk => file = file + chunk);
+      file = file + footer;
+      fs.writeFileSync('src/loader.ts', file, {encoding: 'utf8'});
+    })
+    .catch((reason) => console.log(reason))
+}
+
+
 
 function analyze(data, f): string {
   let result = '';
@@ -82,32 +77,24 @@ function analyze(data, f): string {
   return result;
 }
 
-recursive(path, function (err, files) {
-  const promises = [];
-  files
-    .filter(f => {
-      if (f.indexOf('.ts') > 0) return f
-    })
-    .map(f => {
-      const data = fs.readFileSync(f, 'utf8');
+function createLoader(f, declaration): string {
+  const fullPath = './' + f.substr(f.indexOf('src/') + 4);
+  let name = f.substr(f.lastIndexOf('/') + 1);
+  const chunkName = name.substr(0, name.indexOf('.'));
+  const className = declaration.id.name;
+  if (className !== 'OwShell') {
+    console.log(`created:${chunkName}`);
+    return `components['${className}'] = async () =>
+  await import(/* webpackChunkName: "${chunkName}" */'${fullPath}')
+    .then((scope) => new scope.${className}());
 
-      promises.push(new Promise<string>((resolve) => resolve(analyze(data, f))));
-    });
+`;
 
-  Promise
-    .all(promises)
-    .then((loaderChunks: Array<Promise<string>>) => {
-      console.log('finished');
-      let file = header;
-      loaderChunks.map(chunk => file = file + chunk);
-      file = file + footer;
-      fs.writeFileSync('src/loader.ts', file, {encoding: 'utf8'});
-    })
-    .catch((reason) => console.log(reason))
+  }
+  return '';
+}
 
 
-})
-;
 
 
 

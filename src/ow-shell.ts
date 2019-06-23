@@ -39,7 +39,7 @@ export class OwShell extends LitElement {
     ;
 
     Loader.load
-      .initial()
+      .initial(['OwHeader'])
       .then(() => {
         console.log('starting');
         this.router.goto(window.location.hash);
