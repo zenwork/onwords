@@ -83,10 +83,11 @@ export class OwShell extends LitElement {
         <elix-sliding-pages @selected-index-changed=${(this.switchNav())}
             class=${classMap(classes)}
             selected-index="${(this.getIndex(this.activeView))}">
-            <ow-home></ow-home>
-            <ow-portfolio></ow-portfolio>
-            <ow-blog></ow-blog>
+            <ow-home style="overflow: auto"></ow-home>
+            <ow-portfolio style="overflow: auto"></ow-portfolio>
+            <ow-blog style="overflow: auto"></ow-blog>
         </elix-sliding-pages>
+        <ow-footer></ow-footer>
     `
 
   }

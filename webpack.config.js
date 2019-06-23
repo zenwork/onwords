@@ -16,6 +16,38 @@ module.exports = {
     rules: [
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
       {test: /\.ts$/, exclude: /node_modules/, loader: 'babel-loader'},
+      {
+        test: /\.(gif|png|jpe?g|svg|ico)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              outputPath: 'img',
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75,
+              },
+            },
+          },
+        ],
+      },
+
     ],
   },
   resolve: {extensions: ['.js', '.jsx', '.tsx', '.ts', '.json']},
