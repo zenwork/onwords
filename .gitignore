@@ -126,4 +126,3 @@ hs_err_pid*
 
 # Project exclude paths
 /dist/
-/src/loader.ts

@@ -1,14 +1,17 @@
-import { parse, ParserOptions } from "@babel/parser"
-import { File } from "@babel/types"
-import * as fs from "fs";
+// import { parse, ParserOptions } from "@babel/parser"
+// import { File } from "@babel/types"
+// import * as fs from "fs";
+const fs = require('fs');
 
-const recursive = require("recursive-readdir");
+const Parser = require('@babel/parser');
+
+const recursive = require("recursive-readdir-synchronous");
 
 const template = fs.readFileSync('./src/build/template.ts', 'utf8');
 const header = template.substr(0, template.indexOf('// GEN-CODE'));
 const footer = template.substr(template.indexOf('// GEN-CODE') + 12);
 const path = './src/';
-const options: ParserOptions = {
+const options= {
   sourceType: "module",
   plugins: [
     "typescript",
@@ -21,11 +24,14 @@ const options: ParserOptions = {
   ]
 };
 
-recursive(path, function (err, files) {
+module.exports = (function () {
+
+  const files = recursive(path);
+
   const promises = [];
   processFiles(files, promises);
-  waitFor(promises);
-});
+  return waitFor(promises);
+})();
 
 function processFiles(files, promises) {
   files
@@ -35,28 +41,23 @@ function processFiles(files, promises) {
     .map(f => {
       const data = fs.readFileSync(f, 'utf8');
 
-      promises.push(new Promise<string>((resolve) => resolve(analyze(data, f))));
+      promises.push(analyze(data, f));
     });
 }
 
 function waitFor(promises) {
-  Promise
-    .all(promises)
-    .then((loaderChunks: Array<Promise<string>>) => {
-      console.log('finished');
-      let file = header;
-      loaderChunks.sort((chunkA, chunkB) => chunkA.toString().localeCompare(chunkB.toString())).map(chunk => file = file + chunk);
-      file = file + footer;
-      fs.writeFileSync('src/loader.ts', file, {encoding: 'utf8'});
-    })
-    .catch((reason) => console.log(reason))
+  console.log('finished');
+  let file = header;
+  promises.sort((chunkA, chunkB) => chunkA.toString().localeCompare(chunkB.toString())).map(chunk => file = file + chunk);
+  file = file + footer;
+  // fs.writeFileSync('src/loader.ts', file, {encoding: 'utf8'});
+  return file;
 }
 
 
-
-function analyze(data, f): string {
+function analyze(data, f) {
   let result = '';
-  let file: File = parse(data, options);
+  let file = Parser.parse(data, options);
   file.program.body.filter(s => {
     // console.log(s.type);
     switch (s.type) {
@@ -77,7 +78,7 @@ function analyze(data, f): string {
   return result;
 }
 
-function createLoader(f, declaration): string {
+function createLoader(f, declaration){
   const fullPath = './' + f.substr(f.indexOf('src/') + 4);
   let name = f.substr(f.lastIndexOf('/') + 1);
   const chunkName = name.substr(0, name.indexOf('.'));
