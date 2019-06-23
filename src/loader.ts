@@ -1,24 +1,25 @@
 const components = {};
 
-components['header'] = async () =>
-  await import(/* webpackChunkName: "ow-header" */'./site/ow-header.ts')
-    .then((scope) => new scope.OwHeader());
-
-components['home'] = async () =>
-  await import(/* webpackChunkName: "ow-home" */'./site/ow-home.ts')
-    .then((scope) => new scope.OwHome());
-
-components['portfolio'] = async () =>
-  await import(/* webpackChunkName: "ow-portfolio" */'./site/ow-portfolio.ts')
-    .then((scope) => new scope.OwPortfolio());
-
-components['blog'] = async () =>
+components['OwBlog'] = async () =>
   await import(/* webpackChunkName: "ow-blog" */'./site/ow-blog.ts')
     .then((scope) => new scope.OwBlog());
 
-components['elix-subset'] = async () =>
+components['OwHeader'] = async () =>
+  await import(/* webpackChunkName: "ow-header" */'./site/ow-header.ts')
+    .then((scope) => new scope.OwHeader());
+
+components['OwHome'] = async () =>
+  await import(/* webpackChunkName: "ow-home" */'./site/ow-home.ts')
+    .then((scope) => new scope.OwHome());
+
+components['OwPortfolio'] = async () =>
+  await import(/* webpackChunkName: "ow-portfolio" */'./site/ow-portfolio.ts')
+    .then((scope) => new scope.OwPortfolio());
+
+components['ElixSubset'] = async () =>
   await import(/* webpackChunkName: "elix-subset" */'./shared/elix-subset.ts')
-    .then((scope) => new scope.default());
+    .then((scope) => new scope.ElixSubset());
+
 
 function load(k, components) {
   console.debug(`loading ${k}`);
@@ -28,7 +29,7 @@ function load(k, components) {
 export const Loader = {
   load: {
     async initial() {
-      return Promise.all([load('header', components)]);
+      return Promise.all([load('OwHeader', components)]);
     },
     async all() {
       let loading = [];
