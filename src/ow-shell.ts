@@ -14,7 +14,7 @@ export class OwShell extends LitElement {
 
   constructor() {
     super();
-    console.log('loading...');
+    console.debug('loading...');
 
     this.router = new Router(
       () => {
@@ -41,7 +41,7 @@ export class OwShell extends LitElement {
     Loader.load
       .initial(['OwHeader'])
       .then(() => {
-        console.log('starting');
+        console.debug('starting');
         this.router.goto(window.location.hash);
 
       })
@@ -72,7 +72,7 @@ export class OwShell extends LitElement {
   }
 
   protected render(): TemplateResult | void {
-    console.log('rendering: ' + this.activeView);
+    // console.log('rendering: ' + this.activeView);
     let classes = {hidden: !this.finishedLoading};
     let beforeClases = {hidden: this.finishedLoading};
 
@@ -80,7 +80,7 @@ export class OwShell extends LitElement {
 
         <ow-header></ow-header>
         <div class=${classMap(beforeClases)}>...Ordering the words...</div>
-        <elix-sliding-pages @selected-index-changed=${(e) => console.log(e)}
+        <elix-sliding-pages @selected-index-changed=${(this.switchNav())}
             class=${classMap(classes)}
             selected-index="${(this.getIndex(this.activeView))}">
             <ow-home></ow-home>
@@ -91,6 +91,23 @@ export class OwShell extends LitElement {
 
   }
 
+
+  private switchNav() {
+    return (e) => {
+
+      switch (e.detail.selectedIndex) {
+        case 0:
+          this.router.goto('');
+          break;
+        case 1:
+          this.router.goto('portfolio');
+          break;
+        case 2:
+          this.router.goto('blog');
+          break;
+      }
+    };
+  }
 
   private getIndex(view: string) {
     switch (view) {

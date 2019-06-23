@@ -40,9 +40,5 @@ module.exports = {
     contentBase: `./dist`,
     port: 9000,
     hot: true,
-  },
-  externals: {
-    fs: 'commonjs fs',
-    path: 'commonjs path',
-  },
+  }
 };
