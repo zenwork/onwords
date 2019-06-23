@@ -4,7 +4,7 @@ import * as fs from "fs";
 
 const recursive = require("recursive-readdir");
 
-const header = 'const components = {};\n\n';
+const header = '// *****************************\n// Generated code... DO NOT EDIT\n// *****************************\nconst components = {};\n\n';
 
 // language=JavaScript 1.7
 const footer =

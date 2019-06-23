@@ -1,4 +1,11 @@
+// *****************************
+// Generated code... DO NOT EDIT
+// *****************************
 const components = {};
+
+components['ElixSubset'] = async () =>
+  await import(/* webpackChunkName: "elix-subset" */'./shared/elix-subset.ts')
+    .then((scope) => new scope.ElixSubset());
 
 components['OwBlog'] = async () =>
   await import(/* webpackChunkName: "ow-blog" */'./site/ow-blog.ts')
@@ -15,10 +22,6 @@ components['OwHome'] = async () =>
 components['OwPortfolio'] = async () =>
   await import(/* webpackChunkName: "ow-portfolio" */'./site/ow-portfolio.ts')
     .then((scope) => new scope.OwPortfolio());
-
-components['ElixSubset'] = async () =>
-  await import(/* webpackChunkName: "elix-subset" */'./shared/elix-subset.ts')
-    .then((scope) => new scope.ElixSubset());
 
 
 function load(k, components) {
