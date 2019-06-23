@@ -1,1 +1,1 @@
-import './build/loader-gen.js'
+import /* codegen */ './build/loader-gen.js'

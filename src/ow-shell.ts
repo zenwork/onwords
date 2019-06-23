@@ -80,7 +80,7 @@ export class OwShell extends LitElement {
 
         <ow-header></ow-header>
         <div class=${classMap(beforeClases)}>...Ordering the words...</div>
-        <elix-sliding-pages
+        <elix-sliding-pages @selected-index-changed=${(e) => console.log(e)}
             class=${classMap(classes)}
             selected-index="${(this.getIndex(this.activeView))}">
             <ow-home></ow-home>
