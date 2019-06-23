@@ -46,7 +46,7 @@ function processFiles(files, promises) {
 }
 
 function waitFor(promises) {
-  console.log('finished');
+  console.log('OnWords: loader code gen finished');
   let file = header;
   promises.sort((chunkA, chunkB) => chunkA.toString().localeCompare(chunkB.toString())).map(chunk => file = file + chunk);
   file = file + footer;
@@ -84,7 +84,7 @@ function createLoader(f, declaration){
   const chunkName = name.substr(0, name.indexOf('.'));
   const className = declaration.id.name;
   if (className !== 'OwShell') {
-    console.log(`created:${chunkName}`);
+    // console.log(`created:${chunkName}`);
     return `components['${className}'] = async () =>
   await import(/* webpackChunkName: "${chunkName}" */'${fullPath}')
     .then((scope) => new scope.${className}());
