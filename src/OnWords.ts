@@ -1,9 +1,10 @@
-import { html, css, LitElement } from 'lit-element';
+import { css, html, LitElement } from '../node_modules/lit-element/lit-element';
 
 export default class OnWords extends LitElement {
+  private readonly heading: string;
   constructor() {
     super();
-    this.heading = 'Hello world!';
+    this.heading = 'Hello flo!';
   }
 
   static get styles() {
