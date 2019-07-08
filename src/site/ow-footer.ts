@@ -3,6 +3,7 @@ import { LitElement, TemplateResult, html, customElement } from "lit-element";
 @customElement('ow-footer')
 export class OwFooter extends LitElement {
   protected render(): TemplateResult | void {
+    // language=html
     return html`
         <footer >
     <div></div>

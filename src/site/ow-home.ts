@@ -3,6 +3,7 @@ import { html, LitElement, TemplateResult } from "lit-element";
 export class OwHome extends LitElement {
 
   protected render(): TemplateResult | void {
+    // language=html
     return html`<p>
     for your professional writing, proofreading, editing & communication needs
 </p>

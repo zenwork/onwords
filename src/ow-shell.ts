@@ -71,25 +71,15 @@ export class OwShell extends LitElement {
     `
   }
 
-  protected render(): TemplateResult | void {
-    // console.log('rendering: ' + this.activeView);
-    let classes = {hidden: !this.finishedLoading};
-    let beforeClases = {hidden: this.finishedLoading};
-
-    return html`
-
-        <ow-header></ow-header>
-        <div class=${classMap(beforeClases)}>...Ordering the words...</div>
-        <elix-sliding-pages @selected-index-changed=${(this.switchNav())}
-            class=${classMap(classes)}
-            selected-index="${(this.getIndex(this.activeView))}">
-            <ow-home style="overflow: auto"></ow-home>
-            <ow-portfolio style="overflow: auto"></ow-portfolio>
-            <ow-blog style="overflow: auto"></ow-blog>
-        </elix-sliding-pages>
-        <ow-footer></ow-footer>
-    `
-
+  private static getIndex(view: string) {
+    switch (view) {
+      case 'portfolio':
+        return 1;
+      case 'blog':
+        return 3;
+      default:
+        return 0;
+    }
   }
 
 
@@ -110,15 +100,25 @@ export class OwShell extends LitElement {
     };
   }
 
-  private getIndex(view: string) {
-    switch (view) {
-      case 'portfolio':
-        return 1;
-      case 'blog':
-        return 3;
-      default:
-        return 0;
-    }
+  protected render(): TemplateResult | void {
+    // console.log('rendering: ' + this.activeView);
+    let classes = {hidden: !this.finishedLoading};
+    let beforeClases = {hidden: this.finishedLoading};
+
+    // language=html
+    return html`
+        <ow-header></ow-header>
+        <div class=${classMap(beforeClases)}>...Ordering the words...</div>
+        <elix-sliding-pages @selected-index-changed=${(this.switchNav())}
+            class=${classMap(classes)}
+            selected-index="${(OwShell.getIndex(this.activeView))}">
+            <ow-home style="overflow: auto"></ow-home>
+            <ow-portfolio style="overflow: auto"></ow-portfolio>
+            <ow-blog style="overflow: auto"></ow-blog>
+        </elix-sliding-pages>
+        <ow-footer></ow-footer>
+    `
+
   }
 }
 
