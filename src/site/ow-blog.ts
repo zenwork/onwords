@@ -2,7 +2,7 @@ import { customElement, html, LitElement, TemplateResult } from "lit-element";
 
 export { OwBlogViewer } from "../blog/ow-blog-viewer";
 export { OwBlogEntry } from "../blog/ow-blog-entry"
-export { SubscribableRequest, SubscribableWrapper } from "../blog/subscribable"
+export { PublicationRequest } from "../shared/publishable/SubscriberMixin"
 
 @customElement('ow-blog')
 export class OwBlog extends LitElement {
@@ -27,3 +27,4 @@ export class OwBlog extends LitElement {
   }
 }
 
+export { Publication } from "../shared/publishable/PublisherMixin";

@@ -1,14 +1,16 @@
 import { customElement, html, LitElement, TemplateResult } from "lit-element";
-import { publish, Subscribable, SubscribableWrapper } from "./subscribable";
+import mix from "mix-with";
+import { Publication, PublisherMixin } from "../shared/publishable/PublisherMixin";
 
 @customElement('ow-blog-viewer')
-export class OwBlogViewer extends LitElement {
-  private published: SubscribableWrapper<BlogData>;
+export class OwBlogViewer extends mix(LitElement).with(PublisherMixin) {
+
+  private published: Publication<BlogData>;
 
   constructor() {
     super();
-    const data: BlogData = new BlogData("foo bar baz");
-    this.published = publish<BlogData>(this, data);
+    const name = 'owblogdata';
+    this.published = this.publish<BlogData>(name, {entry: "foo bar baz"});
   }
 
   protected render(): TemplateResult | void {
@@ -19,11 +21,6 @@ export class OwBlogViewer extends LitElement {
   }
 }
 
-export class BlogData extends Subscribable {
+export interface BlogData {
   entry: string;
-
-  constructor(entry: string) {
-    super('owblogdata');
-    this.entry = entry;
-  }
 }

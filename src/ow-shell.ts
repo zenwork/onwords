@@ -82,7 +82,6 @@ export class OwShell extends LitElement {
     }
   }
 
-
   private switchNav() {
     return (e) => {
 
