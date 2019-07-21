@@ -15,6 +15,7 @@
         "dev"       : "webpack-dev-server --mode development"
     },
     "dependencies"   : {
+        "bubblesub"             : "^1.0.2",
         "elix"                  : "^6.0.2",
         "lit-element"           : "^2.1.0",
         "mix-with"              : "^3.0.1",

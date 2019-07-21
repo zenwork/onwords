@@ -6,7 +6,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/index.ts',
   devtool: 'source-map',
   output: {
     filename: '[name].[hash].js',

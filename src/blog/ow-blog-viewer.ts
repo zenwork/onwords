@@ -1,6 +1,7 @@
+import { Publication, PublisherMixin } from "bubblesub"
 import { customElement, html, LitElement, TemplateResult } from "lit-element";
-import mix from "mix-with";
-import { Publication, PublisherMixin } from "../shared/publishable/PublisherMixin";
+import { mix } from "mix-with";
+
 
 @customElement('ow-blog-viewer')
 export class OwBlogViewer extends mix(LitElement).with(PublisherMixin) {

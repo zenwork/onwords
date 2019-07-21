@@ -1,6 +1,7 @@
+// import { SubscriberMixin } from "bubblesub";
+import { SubscriberMixin } from "bubblesub";
 import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
-import mix from "mix-with";
-import { SubscriberMixin } from "../shared/publishable/SubscriberMixin";
+import { mix } from "mix-with";
 import { BlogData } from "./ow-blog-viewer";
 
 @customElement('ow-blog-entry')
