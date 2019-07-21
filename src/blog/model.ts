@@ -10,3 +10,5 @@ export function updateBlogData(ctx: LitElement, entryName: string): any {
     ctx.requestUpdate();
   };
 }
+
+export const BLOG_DATA = 'owblogdata';

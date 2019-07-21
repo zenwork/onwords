@@ -1,8 +1,7 @@
 import { Publication, PublisherMixin } from "bubblesub/dist/PublisherMixin"
 import { customElement, html, LitElement, TemplateResult } from "lit-element";
-import { mix } from '../../node_modules/mix-with/lib/index';
-import { BLOG_DATA } from "../site/ow-blog";
-import { BlogData } from "./model";
+import { mix } from 'mix-with';
+import { BLOG_DATA, BlogData } from "./model";
 
 
 @customElement('ow-blog-viewer')
