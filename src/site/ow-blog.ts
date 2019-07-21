@@ -2,6 +2,7 @@ import { customElement, html, LitElement, TemplateResult } from "lit-element";
 
 export { OwBlogViewer } from "../blog/ow-blog-viewer";
 export { OwBlogEntry } from "../blog/ow-blog-entry"
+export const BLOG_DATA = 'owblogdata';
 
 @customElement('ow-blog')
 export class OwBlog extends LitElement {
@@ -25,5 +26,3 @@ export class OwBlog extends LitElement {
     `;
   }
 }
-
-//export { Publication } from "bubblesub/dist/index";

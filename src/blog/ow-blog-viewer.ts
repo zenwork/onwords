@@ -1,6 +1,8 @@
-import { Publication, PublisherMixin } from "bubblesub"
+import { Publication, PublisherMixin } from "bubblesub/dist/PublisherMixin"
 import { customElement, html, LitElement, TemplateResult } from "lit-element";
-import { mix } from "mix-with";
+import { mix } from '../../node_modules/mix-with/lib/index';
+import { BLOG_DATA } from "../site/ow-blog";
+import { BlogData } from "./model";
 
 
 @customElement('ow-blog-viewer')
@@ -10,8 +12,9 @@ export class OwBlogViewer extends mix(LitElement).with(PublisherMixin) {
 
   constructor() {
     super();
-    const name = 'owblogdata';
-    this.published = this.publish<BlogData>(name, {entry: "foo bar baz"});
+
+    this.published = this.publish<BlogData>(BLOG_DATA, {entry: "this is a publishable"});
+    setTimeout(() => {this.published.update({entry: "this is an updated publishable"})}, 5000);
   }
 
   protected render(): TemplateResult | void {
@@ -22,6 +25,4 @@ export class OwBlogViewer extends mix(LitElement).with(PublisherMixin) {
   }
 }
 
-export interface BlogData {
-  entry: string;
-}
+

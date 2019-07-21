@@ -1,6 +1,3 @@
-// import { parse, ParserOptions } from "@babel/parser"
-// import { File } from "@babel/types"
-// import * as fs from "fs";
 const fs = require('fs');
 
 const Parser = require('@babel/parser');
@@ -30,7 +27,9 @@ module.exports = (function () {
 
   const promises = [];
   processFiles(files, promises);
-  return waitFor(promises);
+  const output = waitFor(promises);
+  console.log(output)
+  return output;
 })();
 
 function processFiles(files, promises) {
@@ -66,15 +65,45 @@ function analyze(data, f) {
       case 'ExportDefaultDeclaration':
         // case 'ExportAllDeclaration':
         let declaration = s.declaration;
-        // console.log(declaration.type);
+
         if (declaration && declaration.type === 'ClassDeclaration') {
-          if (declaration.id.name === 'ElixSubset' || (declaration.superClass && (declaration.superClass.name === 'LitElement' || declaration.superClass.name === 'HTMLElement'))) {
+
+          console.log('-----------------------------------------');
+          console.log((declaration.id.name) ? declaration.id.name : 'unkonwn');
+
+          if (declaration.id && declaration.id.name === 'ElixSubset') {
             result = createLoader(f, declaration);
+          }
+
+          if (declaration.superClass && declaration.superClass.type) {
+            // console.log(declaration.superClass.type);
+            // console.log(JSON.stringify(declaration));
+            switch (declaration.superClass.type) {
+              case 'Identifier':
+                if (declaration.id && declaration.id.name === 'ElixSubset'
+                    || (declaration.superClass
+                        && (declaration.superClass.name === 'LitElement'
+                            || declaration.superClass.name === 'HTMLElement'
+                        ))) {
+                  result = createLoader(f, declaration);
+                }
+                break;
+              case 'CallExpression':
+                if (declaration.superClass.callee.object.callee.name === 'mix'
+                    && declaration.superClass.callee.object.arguments
+                    && declaration.superClass.callee.object.arguments[0].name === 'LitElement'
+                ) {
+                  result = createLoader(f, declaration);
+                }
+                break;
+
+            }
           }
         }
         break;
     }
   });
+  //console.log(result)
   return result;
 }
 
