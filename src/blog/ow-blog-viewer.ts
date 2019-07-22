@@ -9,6 +9,7 @@ export class OwBlogViewer extends mix(LitElement).with(PublisherMixin) {
 
   private published: Publication<BlogData>;
 
+
   constructor() {
     super();
 

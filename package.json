@@ -12,7 +12,8 @@
         "build"     : "webpack --config webpack.config.js --watch",
         "build-prod": "webpack --config webpack.config.js --mode production",
         "start"     : "http-server dist",
-        "dev"       : "webpack-dev-server --mode development"
+        "dev"       : "webpack-dev-server --mode development",
+        "checksize" : "gzip -9 | wc -c"
     },
     "dependencies"   : {
         "bubblesub"             : "^1.0.2",

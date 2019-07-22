@@ -28,7 +28,7 @@ module.exports = (function () {
   const promises = [];
   processFiles(files, promises);
   const output = waitFor(promises);
-  console.log(output)
+  // console.log(output)
   return output;
 })();
 
@@ -68,8 +68,8 @@ function analyze(data, f) {
 
         if (declaration && declaration.type === 'ClassDeclaration') {
 
-          console.log('-----------------------------------------');
-          console.log((declaration.id.name) ? declaration.id.name : 'unkonwn');
+          // console.log('-----------------------------------------');
+          // console.log((declaration.id.name) ? declaration.id.name : 'unkonwn');
 
           if (declaration.id && declaration.id.name === 'ElixSubset') {
             result = createLoader(f, declaration);
