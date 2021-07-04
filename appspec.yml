@@ -5,10 +5,10 @@ files:
     destination: /home/ubuntu/onwords/
 hooks:
   AfterInstall:
-    - location: setup.sh
+    - location: deploy/setup.sh
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: run.sh
+    - location: deploy/run.sh
       timeout: 300
       runas: root
