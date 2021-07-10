@@ -1,6 +1,10 @@
 echo "BUILD FOR PROD"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-nvm install 16
+echo
+echo "--> install latest nodejs "
+sudo apt update
+sudo apt install nodejs
+echo
+echo "--> setup onwords"
 cd "$(dirname "$0")" || exit
 cd ../site || (echo "[../site] directory not found" & exit 1)
 npm run build
