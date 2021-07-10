@@ -1,9 +1,10 @@
 echo "BUILD FOR PROD"
 echo
 echo "--> install latest nodejs "
-sudo apt-get update
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install --assume-yes nodejs npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+node -e "console.log('Running Node.js ' + process.version)"
 node --version
 npm --version
 echo
