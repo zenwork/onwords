@@ -1,8 +1,11 @@
 echo "BUILD FOR PROD"
 echo
 echo "--> install latest nodejs "
-sudo apt update
-sudo apt install --assume-yes nodejs npm
+sudo apt-get update
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install --assume-yes nodejs npm
+node --version
+npm --version
 echo
 echo "--> setup onwords"
 cd "$(dirname "$0")" || exit
