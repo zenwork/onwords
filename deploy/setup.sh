@@ -7,8 +7,8 @@ echo
 echo "--> setup onwords"
 cd "$(dirname "$0")" || exit
 cd ../site || (echo "[../site] directory not found" & exit 1)
-
-if npm ci & npm run build; then
+npm ci
+if npm run build; then
     echo "BUILD COMPLETED"
 else
     echo "BUILD FAILED";
