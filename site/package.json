@@ -29,7 +29,7 @@
     "build": "rimraf dist && tsc && rollup -c rollup.config.js",
     "start:build": "npm run build && web-dev-server --root-dir dist --app-index index.html --open --compatibility none",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
-    "serve": "serve -p 80 --ssl-key deploy/14673932_onwords.ch.key --ssl-cert deploy/14673932_onwords.ch.cert ./dist"
+    "serve": "serve -p 80 --ssl-key ../deploy/14673932_onwords.ch.key --ssl-cert ../deploy/14673932_onwords.ch.cert ./dist"
   },
   "name": "on-words",
   "version": "0.0.0",
