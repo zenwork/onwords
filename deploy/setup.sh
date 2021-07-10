@@ -2,7 +2,7 @@ echo "BUILD FOR PROD"
 echo
 echo "--> install latest nodejs "
 sudo apt update
-sudo apt install nodejs
+sudo apt install --assume-yes nodejs
 echo
 echo "--> setup onwords"
 cd "$(dirname "$0")" || exit
