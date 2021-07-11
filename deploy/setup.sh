@@ -1,9 +1,12 @@
 echo "BUILD FOR PROD"
 
 echo
-echo "--> install latest nodejs "
 node --version
 npm --version
+
+echo
+echo "--> setup apache proxy"
+apache/setup.sh
 
 echo
 echo "--> setup onwords"
