@@ -3,6 +3,8 @@ echo 'APACHE 2 CONFIGURE'
 #sudo apt install certbot python3-certbot-apache
 #sudo certbot --apache --domain www.onwords.ch --reinstall --redirect
 
+sudo certbot renew
+
 ## enable modules
 #sudo a2enmod proxy
 #sudo a2enmod proxy_http
