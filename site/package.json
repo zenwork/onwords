@@ -32,7 +32,7 @@
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
     "serve": "serve -p 3000 ./dist",
     "prod:start": "pm2 start npm --name \"onwords\" -- run serve",
-    "prodstop": "pm2 stop 'all'; pm2 kill ",
+    "prod:stop": "pm2 stop 'all'; pm2 kill ",
     "prod:logs": "pm2 logs"
   },
   "name": "on-words",
