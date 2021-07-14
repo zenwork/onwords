@@ -31,8 +31,9 @@
     "start:build": "npm run build && web-dev-server --root-dir dist --app-index index.html --open --compatibility none",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
     "serve": "serve -p 3000 ./dist",
-    "serve:prod": "pm2 -n onwords serve -p 3000 ./dist",
-    "stop:prod": "pm2 stop 'all'"
+    "prod:start": "pm2 start npm --name \"onwords\" -- run serve",
+    "prod:stop": "pm2 stop 'all'; pm2 kill ",
+    "prod:logs": "pm2 logs"
   },
   "name": "on-words",
   "version": "0.0.0",
