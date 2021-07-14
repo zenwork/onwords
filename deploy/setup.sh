@@ -13,11 +13,10 @@ echo
 echo "--> setup onwords"
 cd ../site || (echo "[../site] directory not found" & exit 1)
 
-npm ci
-if npm run build; then
+
+if (npm ci && npm run build); then
     echo "BUILD COMPLETED"
 else
     echo "BUILD FAILED";
-    # your termination logic here
     exit 1;
 fi

@@ -19,7 +19,8 @@
     "rollup": "^2.52.8",
     "serve": "^12.0.0",
     "tslib": "^2.3.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "pm2": "^5.1.0"
   },
   "scripts": {
     "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
@@ -29,7 +30,9 @@
     "build": "rimraf dist && tsc && rollup -c rollup.config.js",
     "start:build": "npm run build && web-dev-server --root-dir dist --app-index index.html --open --compatibility none",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
-    "serve": "serve -p 3000 ./dist"
+    "serve": "serve -p 3000 ./dist",
+    "serve:prod": "pm2 -n onwords serve -p 3000 ./dist",
+    "stop:prod": "pm2 stop 'all'"
   },
   "name": "on-words",
   "version": "0.0.0",
