@@ -1,8 +1,13 @@
 // import { playwrightLauncher } from '@web/test-runner-playwright';
+import image          from '@rollup/plugin-image'
+import { fromRollup } from '@web/dev-server-rollup'
+
+const imagePlugin = fromRollup(image)
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   files: 'out-tsc/test/**/*.test.js',
   nodeResolve: true,
+  plugins:[imagePlugin()]
 
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
   // esbuildTarget: 'auto',
