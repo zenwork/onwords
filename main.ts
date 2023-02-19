@@ -1,5 +1,5 @@
-import {Hono}  from 'hono'
-import {serve} from 'std/http/server.ts'
+import {Hono}  from '/hono'
+import {serve} from '/std/http/server.ts'
 import {call}  from './call.ts'
 
 const app = new Hono()
