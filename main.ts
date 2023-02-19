@@ -1,9 +1,8 @@
-import {Hono}  from 'hono'
-import {serve} from 'std/http/server.ts'
-import {call}  from './call.ts'
+import { Application } from "https://deno.land/x/oak/mod.ts";
+import {call}          from './call.ts'
 
-const app = new Hono()
+const app = new Application();
 
-app.get('/', call)
+app.use(call);
 
-serve(app.fetch)
+await app.listen({ port: 8000 });
