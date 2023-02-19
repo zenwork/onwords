@@ -1,4 +1,4 @@
-import {Hono}  from '/hono'
+import {Hono}  from 'npm:hono'
 import {serve} from '/std/http/server.ts'
 import {call}  from './call.ts'
 
