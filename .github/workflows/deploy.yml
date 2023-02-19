@@ -19,7 +19,7 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "zenwork-onwords-dev"
+          project: "zenwork-onwords"
           entrypoint: "./main.ts"
 
   deploy-dev:
