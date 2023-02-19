@@ -1,3 +1,3 @@
-export let call = (c) => {
-    return c.text('Onwords and Beyond!')
+export let call = (ctx) => {
+    ctx.response.body = "Onwords and Beyond!";
 }
