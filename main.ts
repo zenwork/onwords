@@ -1,5 +1,5 @@
 import {Hono}  from 'npm:hono'
-import {serve} from 'https://deno.land/std@0.177.0/std/http/server.ts'
+import {serve} from 'https://deno.land/std@0.177.0/http/server.ts'
 import {call}  from './call.ts'
 
 const app = new Hono()
