@@ -1,3 +1,3 @@
 export let call = (c) => {
-    return c.text('Hello Flooo!')
+    return c.text('Onwords and Beyond!')
 }
