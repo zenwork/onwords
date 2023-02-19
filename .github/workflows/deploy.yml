@@ -4,11 +4,11 @@ on: [push]
 jobs:
   deploy:
     if: github.ref == 'refs/heads/master'
-    name: Deploy
+    name: "Deploy PROD"
     runs-on: ubuntu-latest
     permissions:
-      id-token: write # Needed for auth with Deno Deploy
-      contents: read # Needed to clone the repository
+      id-token: write
+      contents: read
 
     steps:
       - name: Clone repository
@@ -24,11 +24,11 @@ jobs:
 
   deploy-dev:
     if: github.ref == 'refs/heads/dev'
-    name: Deploy
+    name: "Deploy DEV"
     runs-on: ubuntu-latest
     permissions:
-      id-token: write # Needed for auth with Deno Deploy
-      contents: read # Needed to clone the repository
+      id-token: write
+      contents: read
 
     steps:
       - name: Clone repository
