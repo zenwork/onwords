@@ -19,6 +19,11 @@
             font-family: sans-serif;
             font-size: 1.5rem;
             font-weight: lighter;
+            line-height: 120%;
+        }
+
+        a, a:active, a:visited {
+            color: #b0f3f8;
         }
 
         h1 {
@@ -28,6 +33,7 @@
             font-weight: bold;
             color: #ffffff;
             text-shadow: 0.15rem 0.15rem 0.3rem #d8f4f6;
+            line-height: 160%;
         }
 
         h2 {
@@ -35,15 +41,38 @@
             font-family: 'Wire One', sans-serif;
             font-size: 3rem;
             font-weight: bold;
+            line-height: 120%;
+
         }
 
         h3 {
-            margin-top: 0.5rem;
-            margin-right: 0;
-            margin-left: 0;
-            margin-bottom: 0;
+            margin: 0 0.5rem;
             font-family: 'Wire One', sans-serif;
             font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0.15rem 0.15rem 0.2rem #d8f4f6;
+            color: #ffffff;
+            overflow: hidden;
+            line-height: 120%;
+        }
+
+
+        h3:after {
+            content: "";
+            display: inline-block;
+            height: 0.5em;
+            vertical-align: top;
+            width: 100%;
+            margin-right: -100%;
+            margin-left: 10px;
+            border-bottom: 1px solid #ffffff;
+            box-shadow: 0.1rem 0 0.5rem #d8f4f6;
+            clip-path: inset(0 0 -2rem 0);
+        }
+
+
+        .separator {
+            font-family: 'Wire One', sans-serif;
             font-weight: bold;
             text-shadow: 0.15rem 0.15rem 0.2rem #d8f4f6;
             color: #ffffff;
@@ -54,6 +83,16 @@
         }
 
 
+        #main {
+            margin: 0 3rem 3rem;
+
+        }
+
+        .footer {
+            height: 16vw;
+            width: 100vw;
+        }
+
         .text {
             font-size: 15vw;
             font-family: 'Courier Prime', monospace;
@@ -62,27 +101,35 @@
             fill-opacity: 10%;
         }
 
-        #main {
-            margin: 0 3rem 3rem;
-
-        }
-
-        section {
-            margin: 3rem 30vw 0 0;
-            border-top: #d8f4f6 solid 0.1rem;
-
-        }
-
-        .footer {
-            height:20rem
-        }
-
         @media only screen and (max-width: 600px) {
+
+            .center-small {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+            }
+
+            .center-small-text {
+                text-align: center;
+            }
 
             section {
                 margin: 3rem 5vw 0 0;
-                border-top: #d8f4f6 solid 0.1rem;
 
+            }
+
+            h3:before {
+                content: "";
+                display: inline-block;
+                height: 0.5em;
+                vertical-align: top;
+                width: 100%;
+                margin-left: -100%;
+                margin-right: 10px;
+                border-bottom: 1px solid #ffffff;
+                box-shadow: 0.1rem 0 0.5rem #d8f4f6;
+                clip-path: inset(0 0 -2rem 0);
             }
         }
 
@@ -91,109 +138,86 @@
 </head>
 <body>
     <article id="main">
-        <h1>On Words</h1>
-        <img src="img/allison.jpg" height="300" width="300" alt="portrait of Allison Turner"/>
+        <h1 class="center-small-text">On Words</h1>
+        <img src="img/allison.jpg" alt="portrait of Allison Turner" class="center-small"/>
         <section style="border:none">
-            <h2>
-                I am a language editor and proofreader driven by precision and polish:
-                a textual healer.
-            </h2>
-            <p style="font-weight: bold">email: allison.turner@onwords.ch</p>
+            <h2 class="center-small-text">
+                I am a language editor and proofreader driven by precision and polish: a textual healer.</h2>
+            <p style="font-weight: bold" class="center-small-text">allison.turner@onwords.ch</p>
             <p>
-                When I edit, my goal is always to bring out the true meaning of the
-                text. I find the most precise words so that you as the writer say
-                exactly what you want to say. I use my language skills (German and
-                French), English as a Second Language teaching experience, and natural
-                empathy to understand what you mean, and write it the way you would
-                have wanted to: clearly, correctly, and a pleasure to read.
-            </p>
+                When I edit, my goal is always to bring out the true meaning of the text. I find the most precise words
+                so that you as the writer say exactly what you want to say. I use my language skills (German and
+                French), English as a Second Language teaching experience, and natural empathy to understand what you
+                mean, and write it the way you would have wanted to: clearly, correctly, and a pleasure to read.</p>
             <p>
-                When I proofread, I let my love of perfection guide me. I’m detail
-                oriented, and in proofreading the details are everything. I can't
-                guarantee perfection, but it's always my aim.
-            </p>
+                When I proofread, I let my love of perfection guide me. I’m detail oriented, and in proofreading the
+                details are everything. I can't guarantee perfection, but it's always my aim.</p>
         </section>
         <section>
-            <div>
-                <h3>On Message</h3>
-                <ul>
-                    <li>Commercial</li>
-                    <li>Academic</li>
-                    <li>Personal</li>
-                </ul>
-            </div>
-            <div>
-                <div>
-                    <p>You know what you want to express. I make sure that message gets across to your readers,
-                       clients, and customers.</p>
-                    <p>Whether English is your first, second, or sixth language, you know the importance of choosing
-                       the
-                       right words to say what you mean. As an experienced EFL teacher and Toastmaster, English
-                       editor,
-                       and voracious reader, I can find those right words. </p>
-                    <p>On Words is a one-woman team, offering you the personal service you and your message
-                       deserve.</p>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div>
-                <h3>On Track</h3>
-                <ul>
-                    <li>Marketing material</li>
-                    <li>CVs and cover letters</li>
-                    <li>Academic papers</li>
-                </ul>
-            </div>
-            <div>
-                <div>
-                    <p>Are you launching your business? Are you applying for your dream job? Are you submitting your
-                       PhD thesis or applying for a grant? You know you've got what it takes to succeed &mdash;
-                       don't let grammar or spelling mistakes lessen your chances.</p>
-                </div>
-            </div>
-            <div></div>
-        </section>
-        <section>
-            <div>
-                <h3>On Screen</h3>
-                <ul>
-                    <li>presentations</li>
-                    <li>advertising</li>
-                </ul>
-            </div>
-            <div>
-                <div>
-                    <p>On Words can help you wherever words matter to your audience &mdash; whether it is to copy-edit
-                       the English
-                       version of your web site, improve the PowerPoint slides for your next presentation, or make sure
-                       your
-                       marketing slogans are not lost in translation. No job is too small because every word counts.</p>
-                </div>
-            </div>
-            <div></div>
-        </section>
-        <section>
-            <div>
-                <h3>On Paper</h3>
-                <ul>
-                    <li>Articles</li>
-                    <li>Novels</li>
-                    <li>Short Stories</li>
-                </ul>
-            </div>
-            <div>
-                <div>
-                    <p>On Words combines over 10 years
-                       of experience in editing and proofreading with an immense passion for the English language and a
-                       keen understanding of all things literary. </p>
-                </div>
-            </div>
-        </section>
+            <h3 class="center-small-text">On Message</h3>
+            <ul>
+                <li>Commercial</li>
+                <li>Academic</li>
+                <li>Personal</li>
+            </ul>
+            <p>You know what you want to express. I make sure that message gets across to your readers, clients,
+               and customers.</p>
+            <p>Whether English is your first, second, or sixth language, you know the importance of choosing the
+               right words to say what you mean. As an experienced EFL teacher and Toastmaster, English editor,
+               and voracious reader, I can find those right words. </p>
+            <p>On Words is a one-woman team, offering you the personal service you and your message deserve.</p>
 
-        <svg width="100%" height="200%" class="footer">
-            <text x="0ex" y="100%" class="text">on Words</text>
-        </svg>
+        </section>
+        <section>
+            <h3 class="center-small-text">On Track</h3>
+            <ul>
+                <li>Marketing material</li>
+                <li>CVs and cover letters</li>
+                <li>Academic papers</li>
+            </ul>
+            <p>Are you launching your business? Are you applying for your dream job? Are you submitting your PhD
+               thesis or applying for a grant? You know you've got what it takes to succeed &mdash;don't let
+               grammar or spelling mistakes lessen your chances.</p>
+
+        </section>
+        <section>
+            <h3 class="center-small-text">On Screen</h3>
+            <ul>
+                <li>presentations</li>
+                <li>advertising</li>
+            </ul>
+            <p>On Words can help you wherever words matter to your audience &mdash; whether it is to copy-edit
+               the English version of your web site, improve the PowerPoint slides for your next presentation,
+               or make sure your marketing slogans are not lost in translation. No job is too small because
+               every word counts.</p>
+
+        </section>
+        <section>
+            <br>
+            <h3 class="center-small-text">On Words is Allison Turner</h3>
+            <p>...and Allison Turner is:</p>
+            <ul>
+                <li>an editor</li>
+                <li>a proofreader</li>
+                <li>a member of the <a href="https://www.ciep.uk/">Chartered Institute of Editing and
+                                                                   Proofreading</a>
+                <li>a wordsmith</li>
+                <li>and a textual healer</li>
+            </ul>
+            <p>
+                Contact Me <span class="separator">|</span> on-facebook <span class="separator">|</span>
+                on-linked-in
+                <span class="separator">|</span> on-mail ( <a href="mailto:allison.turner@onwords.ch">allison.turner@onwords.ch</a>
+                )
+            </p>
+
+            <p>&#169;2014-23 On Words, Switzerland. All rights reserved.</p>
+
+
+            <svg width="100%" height="100%" class="footer">
+                <text x="0ex" y="100%" class="text">on Words</text>
+            </svg>
+        </section>
     </article>
 
 
