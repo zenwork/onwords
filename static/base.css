@@ -182,7 +182,7 @@ section:nth-child(1) {
         align-items: center;
         align-self: center;
         padding-top: 0;
-        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
         height: calc(40vh - 0rem);
     }
 
