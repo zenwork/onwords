@@ -1,220 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="base.css"/>
     <meta charset="UTF-8">
     <title>Onwords</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Yanone+Kaffeesatz&display=swap"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Wire+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant&family=Courier+Prime&family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="On Words: english editing services provided by Allison Turner, textual healer.">
-    <style>
-
-        #main {
-            margin: 0 3rem 3rem;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #003d57;
-            color: #d8f4f6;
-            font-family: sans-serif;
-            font-size: 1.5rem;
-            font-weight: lighter;
-            line-height: 120%;
-        }
-
-        a, a:active, a:visited {
-            color: #b0f3f8;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 7rem;
-            font-weight: bold;
-            color: #ffffff;
-            text-shadow: 0.1rem 0.1rem 0.3rem #d8f4f6;
-            line-height: 160%;
-
-        }
-
-        h1, h3, h2 {
-            font-family: 'Yanone Kaffeesatz', sans-serif;
-        }
-
-        h2 {
-            margin: 0 0.5rem;
-            text-shadow: 0.1rem 0.1rem 0.2rem #d8f4f6;
-            color: #ffffff;
-        }
-
-        h2, h3 {
-            font-size: 3rem;
-            line-height: 120%;
-        }
-
-        h2:after {
-            content: "";
-            display: inline-block;
-            height: 0.5em;
-            vertical-align: top;
-            width: 100%;
-            margin-right: -100%;
-            margin-left: 10px;
-            border-bottom: 0.2rem solid #ffffff;
-            box-shadow: 0.1rem 0 0.5rem #d8f4f6;
-            clip-path: inset(0 0 -2rem 0);
-        }
-
-        h3 {
-            margin: 0;
-            font-size: 2rem;
-            overflow: hidden;
-        }
-
-        p {
-            font-size: smaller;
-        }
-
-        .above-fold--container {
-            flex-direction:column;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            margin-top: 6vh;
-
-        }
-
-        .above-fold--1 {
-            display: flex;
-            align-items: center;
-            align-self: start;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            height: calc(30vh - 4rem);
-            font-size: clamp(8rem, calc(100vw / 7), 12rem);
-
-        }
-
-        .above-fold--2 {
-            display: flex;
-            align-items: center;
-            align-self: start;
-            padding-top: 0;
-            padding-bottom: 0;
-            height: calc(30vh - 0rem);
-        }
-
-        .above-fold--3 {
-            display: flex;
-            align-items: center;
-            align-self: start;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            height: calc(23vh - 4rem);
-            font-size: calc((23vh - 1rem) / 5);
-        }
-        .above-fold--4 {
-            display: flex;
-            align-items: center;
-            align-self: start;
-            margin :0;
-            height: calc(10vh - 3rem);
-            padding-bottom: 3rem;
-            font-weight: bolder;
-
-        }
-
-        .separator {
-            font-family: 'Wire One', sans-serif;
-            font-weight: bold;
-            text-shadow: 0.15rem 0.15rem 0.2rem #d8f4f6;
-            color: #ffffff;
-        }
-
-        .footer {
-            height: 16vw;
-            width: 100vw;
-        }
-
-        .text {
-            font-size: 15vw;
-            font-family: 'Courier Prime', monospace;
-            font-weight: bolder;
-            fill: #d8f4f6;
-            fill-opacity: 10%;
-        }
-
-        @media only screen and (max-width: 600px) {
-
-            .above-fold--1 {
-                display: flex;
-                align-items: center;
-                align-self: center;
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-                height: calc(23vh - 2rem);
-                font-size: calc(100vw / 4.5);
-            }
-
-            .above-fold--2 {
-                display: flex;
-                align-items: center;
-                align-self: center;
-                padding-top: 0;
-                padding-bottom: 0;
-                height: calc(40vh - 0rem);
-            }
-
-            .above-fold--3 {
-                display: flex;
-                align-items: center;
-                align-self: center;
-                padding-top: 2rem;
-                padding-bottom: 2rem;
-                height: calc(23vh - 4rem);
-                font-size: calc((20vh - 1rem) / 5);
-            }
-            .above-fold--4 {
-                display: flex;
-                align-items: center;
-                align-self: center;
-                margin :0;
-                height: calc(10vh - 3rem);
-                padding-bottom: 3rem;
-                font-weight: bolder;
-            }
-
-            section {
-                margin: 3rem 5vw 0 0;
-            }
-
-            h2:before {
-                content: "";
-                display: inline-block;
-                height: 0.5em;
-                vertical-align: top;
-                width: 100%;
-                margin-left: -100%;
-                margin-right: 10px;
-                border-bottom: 0.2rem solid #ffffff;
-                box-shadow: 0.1rem 0 0.5rem #d8f4f6;
-                clip-path: inset(0 0 -2rem 0);
-            }
-        }
-
-
-    </style>
 </head>
 <body>
     <article id="main">
         <section class="above-fold--container">
-            <h1 class="above-fold--1 header-text--sm-viewport">On Words</h1>
-            <img class="above-fold--2 center-small-image" src="img/allison.jpg" alt="portrait of Allison Turner"/>
-            <h3 class="above-fold--3 header-text--sm-viewport">
+            <h1 class="above-fold--1">On Words</h1>
+            <img class="above-fold--2" src="img/allison.jpg" alt="portrait of Allison Turner"/>
+            <h3 class="above-fold--3">
                 I am a language editor and proofreader driven by precision and polish: a textual healer.</h3>
             <p class="above-fold--4 header-text--sm-viewport">allison.turner@onwords.ch</p>
         </section>
@@ -274,17 +75,16 @@
             <ul>
                 <li>an editor</li>
                 <li>a proofreader</li>
-                <li>a member of the <a href="https://www.ciep.uk/">Chartered Institute of Editing and
+                <li>a member of the <a href="https://www.ciep.uk/directory/allison-turner">Chartered Institute of Editing and
                                                                    Proofreading</a>
                 <li>a wordsmith</li>
                 <li>and a textual healer</li>
             </ul>
-            <p>
-                Contact Me <span class="separator">|</span> on-facebook <span class="separator">|</span>
-                on-linked-in
-                <span class="separator">|</span> on-mail ( <a href="mailto:allison.turner@onwords.ch">allison.turner@onwords.ch</a>
-                )
-            </p>
+            <h2>Find me </h2>
+            <ul><li><a href="https://www.facebook.com/allison.turner.5011">on facebook</a> </li>
+                <li><a href="https://www.linkedin.com/in/allison-turner-textual-healer/">on linkedIn</a></li>
+                <li>on mail ( <a href="mailto:allison.turner@onwords.ch">allison.turner@onwords.ch</a>)</li>
+            </ul>
 
             <p>&#169;2014-23 On Words, Switzerland. All rights reserved.</p>
 
