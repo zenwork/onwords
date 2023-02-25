@@ -197,6 +197,7 @@ section:nth-child(1){
         margin :0;
         height: calc(10vh - 3rem);
         padding-bottom: 3rem;
+        font-size: calc(80vw / 11);
         font-weight: bolder;
     }
 
