@@ -1,9 +1,14 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
-import staticFiles from "https://deno.land/x/static_files@1.1.6/mod.ts";
+import {Application} from 'https://deno.land/x/oak/mod.ts'
+import {brotli}      from 'https://deno.land/x/oak_compress/mod.ts'
+import staticFiles   from 'https://deno.land/x/static_files/mod.ts'
 
-const app = new Application();
+const app = new Application()
+const oneHour = 3_600_000
 
-app.use(staticFiles("./static"));
+app.use(brotli())
+app.use(staticFiles('./static', {
+    cacheControl: true,
+    maxAge: oneHour
+}))
 
-
-await app.listen({ port: 8000 });
+await app.listen({port: 8000})
