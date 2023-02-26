@@ -1,7 +1,7 @@
 // Copyright 2021 the oak authors. All rights reserved. MIT license.
-import { compressGzip } from "../deps.ts";
-import { compress } from "./compress.ts";
-import { CompressOptions } from "./types.ts";
+import {compressGzip}    from '../deps.ts'
+import {compress}        from './compress.ts'
+import {CompressOptions} from './types.ts'
 
 /** A middleware that will compress with brotli.
  *
@@ -18,16 +18,16 @@ import { CompressOptions } from "./types.ts";
  * ```
  */
 export function gzip(
-  level = 5,
-  options?:
-    | boolean
-    | CompressOptions,
+    level = 5,
+    options?:
+        | boolean
+        | CompressOptions,
 ) {
-  return compress(
-    (u8: Uint8Array) => {
-      return compressGzip(u8, level);
-    },
-    "gzip",
-    options,
-  );
+    return compress(
+        (u8: Uint8Array) => {
+            return compressGzip(u8, level)
+        },
+        'gzip',
+        options,
+    )
 }
