@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "https://deno.land/x/oak/mod.ts": "./deno.land/x/oak@v11.1.0/mod.ts",
+    "https://deno.land/x/oak_compress/mod.ts": "./deno.land/x/oak_compress@v0.0.2/mod.ts",
+    "https://deno.land/x/static_files/mod.ts": "./deno.land/x/static_files@1.1.6/mod.ts",
+    "https://deno.land/": "./deno.land/"
+  }
+}

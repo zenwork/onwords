@@ -1,0 +1,226 @@
+:root {
+    --background-color: #003d57;
+    --main-color: #a8f1f6;
+    --highlight-color: #a8f1f6;
+    --white: #ffffff;
+    --font-family-body: 'Assistant', sans-serif;
+    --font-family-decoration: 'Courier Prime', monospace;
+    --font-family-headers: 'Yanone Kaffeesatz', sans-serif;
+}
+
+#main {
+    margin: 0 3rem 3rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--main-color);
+    font-family: var(--font-family-body);
+    font-size: 1.7rem;
+    font-weight: lighter;
+    line-height: 120%;
+}
+
+article {
+    margin: 0;
+    padding: 0;
+}
+
+a, a:active, a:visited {
+    color: var(--white);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin: 0;
+    font-size: 7rem;
+    font-weight: bold;
+    text-shadow: 0.1rem 0.1rem 0.3rem var(--main-color);
+
+}
+
+h1, h2, h3 {
+    font-family: var(--font-family-headers);
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    margin: 0 0.5rem;
+    text-shadow: 0.1rem 0.1rem 0.2rem var(--main-color);
+    font-size: 3rem;
+    line-height: 120%;
+    position: relative;
+    overflow: hidden;
+}
+
+h2:after {
+    content: "";
+    position: absolute;
+    width: 90%;
+    top: 50%;
+    margin-left: 10px;
+    border-top: 0.2rem solid var(--white);
+    box-shadow: 0.1rem 0 0.5rem var(--main-color);
+    clip-path: inset(0 0 -2rem 0);
+    opacity: 30%;
+}
+
+h3 {
+    line-height: 120%;
+    /*overflow: hidden;*/
+
+}
+
+img {
+    border-radius: 1rem;
+    box-shadow: 0.1rem 0 0.5rem var(--main-color);
+}
+
+p {
+    font-size: smaller;
+}
+
+section {
+    max-width: 70rem;
+    margin-bottom: 8rem;
+}
+
+section:nth-child(1) {
+    margin: 0
+}
+
+
+.above-fold--container {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 6vh;
+
+}
+
+.above-fold--1 {
+    display: flex;
+    align-items: center;
+    align-self: start;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    height: calc(30vh - 2rem);
+    font-size: calc(((100vw + 100vh) / 10));
+
+}
+
+.above-fold--2 {
+    display: flex;
+    align-items: center;
+    align-self: start;
+    padding-top: 0;
+    margin-bottom: 3rem;
+    height: 40vh;
+}
+
+.above-fold--3 {
+    display: flex;
+    align-items: center;
+    align-self: start;
+    padding-bottom: 1rem;
+    height: 100%;
+    font-size: calc((23vh) / 3.5);
+    max-width: 60rem;
+}
+
+.above-fold--4 {
+    display: flex;
+    align-items: center;
+    align-self: start;
+    margin: 0;
+    /*height: calc(10vh - 3rem);*/
+    padding-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: bolder;
+
+}
+
+.separator {
+    font-family: var(--font-family-headers);
+    font-weight: bold;
+    text-shadow: 0.15rem 0.15rem 0.2rem var(--main-color);
+    color: var(--white);
+}
+
+.footer {
+    margin: 0;
+    padding: 0;
+    height: 23vw;
+    width: 90vw;
+}
+
+.inlay {
+    font-size: 17vw;
+    font-family: var(--font-family-decoration);
+    font-weight: bolder;
+    fill: var(--main-color);
+    fill-opacity: 10%;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #main {
+        margin: 0 1rem 3rem;
+    }
+
+    .above-fold--1 {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        height: calc(23vh - 5rem);
+        font-size: calc(100vw / 4.5);
+    }
+
+    .above-fold--2 {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        padding-top: 0;
+        margin-bottom: 1.5rem;
+        height: calc(40vh - 0rem);
+    }
+
+    .above-fold--3 {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        font-size: calc((20vh - 1rem) / 4);
+        text-align: center;
+    }
+
+    .above-fold--4 {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        margin: 0;
+        height: calc(10vh - 3rem);
+        padding-bottom: 3rem;
+        font-size: calc(80vw / 11);
+        font-weight: bolder;
+    }
+
+    section {
+        margin: 3rem 0 0 0;
+    }
+}
+
+.copyright {
+    font-size: small;
+    text-align: center;
+}
