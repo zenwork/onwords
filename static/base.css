@@ -29,7 +29,12 @@ article {
 }
 
 a, a:active, a:visited {
-    color: var(--highlight-color);
+    color: var(--white);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 h1 {
