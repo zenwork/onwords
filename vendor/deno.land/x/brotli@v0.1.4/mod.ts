@@ -1,8 +1,12 @@
 // Copyright 2020-present the denosaurs team. All rights reserved. MIT license.
 
-import init, {compress as wasm_compress, decompress as wasm_decompress, source,} from './wasm.js'
+import init, {
+  source,
+  compress as wasm_compress,
+  decompress as wasm_decompress,
+} from "./wasm.js";
 
-await init(source)
+await init(source);
 
 /**
  * Compress a byte array.
@@ -21,12 +25,12 @@ await init(source)
  * @param lgwin Base 2 logarithm of the sliding window size.
  */
 export function compress(
-    input: Uint8Array,
-    bufferSize: number = 4096,
-    quality: number = 6,
-    lgwin: number = 22,
+  input: Uint8Array,
+  bufferSize: number = 4096,
+  quality: number = 6,
+  lgwin: number = 22,
 ): Uint8Array {
-    return wasm_compress(input, bufferSize, quality, lgwin)
+  return wasm_compress(input, bufferSize, quality, lgwin);
 }
 
 /**
@@ -43,8 +47,8 @@ export function compress(
  * @param bufferSize Read buffer size
  */
 export function decompress(
-    input: Uint8Array,
-    bufferSize: number = 4096,
+  input: Uint8Array,
+  bufferSize: number = 4096,
 ): Uint8Array {
-    return wasm_decompress(input, bufferSize)
+  return wasm_decompress(input, bufferSize);
 }

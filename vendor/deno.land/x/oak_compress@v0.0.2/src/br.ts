@@ -1,7 +1,7 @@
 // Copyright 2021 the oak authors. All rights reserved. MIT license.
-import {compressBrotli}  from '../deps.ts'
-import {compress}        from './compress.ts'
-import {CompressOptions} from './types.ts'
+import { compressBrotli } from "../deps.ts";
+import { compress } from "./compress.ts";
+import { CompressOptions } from "./types.ts";
 
 /** A middleware that will compress with brotli.
  *
@@ -18,5 +18,5 @@ import {CompressOptions} from './types.ts'
  * ```
  */
 export function brotli(options?: boolean | CompressOptions) {
-    return compress(compressBrotli, 'br', options)
+  return compress(compressBrotli, "br", options);
 }

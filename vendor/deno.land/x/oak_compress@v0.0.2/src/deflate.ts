@@ -1,7 +1,7 @@
 // Copyright 2021 the oak authors. All rights reserved. MIT license.
-import {compressDeflate} from '../deps.ts'
-import {compress}        from './compress.ts'
-import {CompressOptions} from './types.ts'
+import { compressDeflate } from "../deps.ts";
+import { compress } from "./compress.ts";
+import { CompressOptions } from "./types.ts";
 
 /** A middleware that will compress with brotli.
  *
@@ -18,16 +18,16 @@ import {CompressOptions} from './types.ts'
  * ```
  */
 export function deflate(
-    level?: number,
-    options?:
-        | boolean
-        | CompressOptions,
+  level?: number,
+  options?:
+    | boolean
+    | CompressOptions,
 ) {
-    return compress(
-        (u8: Uint8Array) => {
-            return compressDeflate(u8, level)
-        },
-        'deflate',
-        options,
-    )
+  return compress(
+    (u8: Uint8Array) => {
+      return compressDeflate(u8, level);
+    },
+    "deflate",
+    options,
+  );
 }
