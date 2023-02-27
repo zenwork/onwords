@@ -1,12 +1,26 @@
-import {Head} from '$fresh/runtime.ts'
+import {asset, Head}              from '$fresh/runtime.ts'
+import {HandlerContext, Handlers} from '$fresh/server.ts'
 
 const denoDeployUrl = /https:\/\/(www\.)?onwords\.ch(\/|\/index.html)?/
+const oneHour = 3_600_000
+export const handler: Handlers = {
+    async GET(_req: Request, ctx: HandlerContext) {
+        const resp = await ctx.render()
+        resp.headers.set('Cache-Control', `max-age=${oneHour}}`)
+        return resp
+    },
+}
 
 export default function Home(request: Request) {
     console.log(`running on: ${request.url.href} [${denoDeployUrl.test(request.url.href)}]`)
     return (
         <>
             <Head>
+                <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png"/>
+                <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png"/>
+                <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png"/>
+                <link rel="manifest" href="favicon/site.webmanifest"/>
+
                 <meta content="On Words" name="title"/>
                 <meta content="English editing services including copy-editing, proofreading, etc." name="description"/>
                 <meta
@@ -21,7 +35,7 @@ export default function Home(request: Request) {
 
                 <title>On Words</title>
 
-                <link rel="stylesheet" type="text/css" href="base.css"/>
+                <link rel="stylesheet" type="text/css" href={asset('./base.css')}/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
                 <link
