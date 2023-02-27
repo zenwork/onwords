@@ -3,8 +3,7 @@ on: [push]
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/master'
-    name: "Deploy PROD"
+    name: "Deploy"
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -20,24 +19,4 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "zenwork-onwords"
-          entrypoint: "./main.ts"
-
-  deploy-dev:
-    if: github.ref != 'refs/heads/master'
-    name: "Deploy DEV"
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v3
-
-      # TODO: add a build step here
-
-      - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "zenwork-onwords-dev"
           entrypoint: "./main.ts"
