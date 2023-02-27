@@ -1,6 +1,15 @@
-import {Head} from '$fresh/runtime.ts'
+import {asset, Head}              from '$fresh/runtime.ts'
+import {HandlerContext, Handlers} from '$fresh/server.ts'
 
 const denoDeployUrl = /https:\/\/(www\.)?onwords\.ch(\/|\/index.html)?/
+const oneHour = 3_600_000
+export const handler: Handlers = {
+    async GET(_req: Request, ctx: HandlerContext) {
+        const resp = await ctx.render()
+        resp.headers.set('Cache-Control', `max-age=${oneHour}}`)
+        return resp
+    },
+}
 
 export default function Home(request: Request) {
     console.log(`running on: ${request.url.href} [${denoDeployUrl.test(request.url.href)}]`)
@@ -21,7 +30,7 @@ export default function Home(request: Request) {
 
                 <title>On Words</title>
 
-                <link rel="stylesheet" type="text/css" href="base.css"/>
+                <link rel="stylesheet" type="text/css" href={asset('./base.css')}/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
                 <link
