@@ -1,17 +1,10 @@
-import {Application} from 'https://deno.land/x/oak/mod.ts'
-import {brotli}      from 'https://deno.land/x/oak_compress/mod.ts'
-import staticFiles   from 'https://deno.land/x/static_files/mod.ts'
-import {setup}       from './setup.ts'
+/// <reference no-default-lib="true" />
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+/// <reference lib="dom.asynciterable" />
+/// <reference lib="deno.ns" />
 
-const app = new Application()
-const oneHour = 3_600_000
+import {start}  from '$fresh/server.ts'
+import manifest from './fresh.gen.ts'
 
-await setup()
-
-app.use(brotli())
-app.use(staticFiles('./static', {
-    cacheControl: true,
-    maxAge: oneHour
-}))
-
-await app.listen({port: 8000})
+await start(manifest)
