@@ -1,8 +1,7 @@
 import {Head} from '$fresh/runtime.ts'
 
 
-export default function Home() {
-    console.log(Deno.env.toObject())
+export default function Home(request:Request) {
     return (
         <>
             <Head>
@@ -11,7 +10,7 @@ export default function Home() {
                 <meta
                     content="editing, copy, proofreading, line, wordsmith, presentation, advertising, marketing, CV, academic, paper, commercial"
                     name="keywords"/>
-                {Deno.env.toObject().ENVIRONMENT === 'PROD'
+                {request.url.href === 'https://onwords.ch' || request.url.href === 'https://www.onwords.ch'
                  ? <meta content="index, follow" name="robots"/>
                  : <meta content="noindex, nofollow" name="robots"/>}
                 <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
