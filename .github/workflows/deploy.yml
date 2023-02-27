@@ -23,7 +23,6 @@ jobs:
           entrypoint: "./main.ts"
 
   deploy-dev:
-    if: github.ref != 'refs/heads/master'
     name: "Deploy DEV"
     runs-on: ubuntu-latest
     permissions:
