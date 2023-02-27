@@ -1,9 +1,9 @@
 import {Head} from '$fresh/runtime.ts'
 
-const denoDeployUrl = 'http://localhost:80'
+const denoDeployUrl = /https:\/\/(www\.)?onwords\.ch(\/|\/index.html)?/
 
 export default function Home(request: Request) {
-    console.log(`running on: ${request.url.href}`)
+    console.log(`running on: ${request.url.href} [${denoDeployUrl.test(request.url.href)}]`)
     return (
         <>
             <Head>
@@ -12,7 +12,7 @@ export default function Home(request: Request) {
                 <meta
                     content="editing, copy, proofreading, line, wordsmith, presentation, advertising, marketing, CV, academic, paper, commercial"
                     name="keywords"/>
-                {request.url.href === denoDeployUrl
+                {denoDeployUrl.test(request.url.href)
                  ? <meta content="index, follow" name="robots"/>
                  : <meta content="noindex, nofollow" name="robots"/>}
                 <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
