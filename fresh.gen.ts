@@ -8,14 +8,14 @@ import * as $1 from './routes/index.tsx'
 import * as $2 from './routes/sitemap.xml.ts'
 
 const manifest = {
-    routes: {
-        './routes/axiomLogger.ts': $0,
-        './routes/index.tsx': $1,
-        './routes/sitemap.xml.ts': $2,
-    },
-    islands: {},
-    baseUrl: import.meta.url,
-    config,
+  routes: {
+    './routes/axiomLogger.ts': $0,
+    './routes/index.tsx': $1,
+    './routes/sitemap.xml.ts': $2,
+  },
+  islands: {},
+  baseUrl: import.meta.url,
+  config,
 }
 
 export default manifest
