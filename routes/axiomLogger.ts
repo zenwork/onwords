@@ -1,8 +1,10 @@
+import userAgent from 'user-agent'
+
 let AXIOM_DATASET: string
 let AXIOM_KEY: string
 let AXIOM_TEST_KEY: string
 let PROD_HOST_MATCH: string
-let envMatcher: RegExp
+let isProd: RegExp
 (function init() {
     const env = Deno.env.toObject()
     AXIOM_DATASET = env.AXIOM_DATASET ?? 'onwords'
@@ -10,7 +12,7 @@ let envMatcher: RegExp
     AXIOM_TEST_KEY = env.AXIOM_TEST_KEY ?? 'no-test-key-provided'
     PROD_HOST_MATCH = env.PROD_HOST_MATCH ?? 'unknown'
     let regex = `https://(www.)?${PROD_HOST_MATCH}`
-    envMatcher = new RegExp(regex)
+    isProd = new RegExp(regex)
 
     console.log(`ENVIRONMENT`)
     console.log(`-----------`)
@@ -20,30 +22,44 @@ let envMatcher: RegExp
     console.log(`PROD_HOST_MATCH: ${PROD_HOST_MATCH} (regex: ${regex})`)
 })()
 
-
 export function logUser(req: Request) {
     try {
-        const host = req.url
-        const {ingestionUrl, key} = getIngestor(host)
         const {region, deployment, agent} = getContext(req)
+        const {browser, cpu, device, engine, os} = userAgent(agent)
+        const lang = req.headers.get('accept-language')
+        const referer = req.headers.get('referer')
 
         let data = {
-            host,
+            name: 'user',
+            host: req.url,
             region,
             deployment,
-            agent
+            agent: {raw: agent, browser, cpu, device, engine, os},
+            lang,
+            referer
         }
 
-        ingest(ingestionUrl, key, data)
+        ingest(data, req.url)
+
     } catch (e) {
         console.log(e)
     }
 }
 
+function ingest(data: any, caller: string) {
+    const host = caller
+    if (!isProd.test(host)) {
+        console.log(data)
+    }
+
+    const {ingestionUrl, key} = getIngestor(host)
+    fetchAndForget(ingestionUrl, key, data)
+}
+
 function getIngestor(url: string) {
     let target = AXIOM_DATASET
     let key = AXIOM_KEY
-    if (!envMatcher.test(url)) {
+    if (!isProd.test(url)) {
         target = target + '-test'
         key = AXIOM_TEST_KEY
     }
@@ -57,7 +73,7 @@ function getContext(req: Request) {
     return {region, deployment, agent}
 }
 
-function ingest(axiomUrl, key: string, data: { agent: any; host: any; region: string; deployment: string }) {
+function fetchAndForget(axiomUrl, key: string, data: { agent: any; host: any; region: string; deployment: string }) {
     fetch(
         axiomUrl,
         {

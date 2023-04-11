@@ -3,15 +3,17 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import config  from './deno.json' assert {type: 'json'}
-import * as $0 from './routes/axiomLogger.ts'
-import * as $1 from './routes/index.tsx'
-import * as $2 from './routes/sitemap.xml.ts'
+import * as $0 from './routes/analytics.ts'
+import * as $1 from './routes/axiomLogger.ts'
+import * as $2 from './routes/index.tsx'
+import * as $3 from './routes/sitemap.xml.ts'
 
 const manifest = {
     routes: {
-        './routes/axiomLogger.ts': $0,
-        './routes/index.tsx': $1,
-        './routes/sitemap.xml.ts': $2,
+        './routes/analytics.ts': $0,
+        './routes/axiomLogger.ts': $1,
+        './routes/index.tsx': $2,
+        './routes/sitemap.xml.ts': $3,
     },
     islands: {},
     baseUrl: import.meta.url,
