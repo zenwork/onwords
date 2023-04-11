@@ -6,5 +6,20 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
+  },
+  "fmt": {
+    "options": {
+      "semiColons": false,
+      "singleQuote": true,
+      "lineWidth": 140,
+      "indentWidth": 2,
+      "proseWrap": "always",
+      "useTabs": false
+    }
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
   }
 }
