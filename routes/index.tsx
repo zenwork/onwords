@@ -1,10 +1,12 @@
 import {asset, Head}              from '$fresh/runtime.ts'
 import {HandlerContext, Handlers} from '$fresh/server.ts'
+import {logUser}                  from './axiomLogger.ts'
 
 const denoDeployUrl = /https:\/\/(www\.)?onwords\.ch(\/|\/index.html)?/
 const oneHour = 3_600_000
 export const handler: Handlers = {
     async GET(_req: Request, ctx: HandlerContext) {
+        logUser(_req)
         const resp = await ctx.render()
         resp.headers.set('Cache-Control', `max-age=${oneHour}}`)
         return resp
@@ -12,7 +14,6 @@ export const handler: Handlers = {
 }
 
 export default function Home(request: Request) {
-    console.log(`running on: ${request.url.href} [${denoDeployUrl.test(request.url.href)}]`)
     return (
         <>
             <Head>
