@@ -1,5 +1,8 @@
 import userAgent from 'user-agent'
 
+
+
+
 let AXIOM_DATASET: string
 let AXIOM_KEY: string
 let AXIOM_TEST_KEY: string
@@ -26,8 +29,8 @@ let isProd: RegExp
 
 export function logUser(req: Request) {
   try {
-    const {region, deployment, agent} = getContext(req)
-    const {browser, cpu, device, engine, os} = userAgent(agent)
+    const { region, deployment, agent } = getContext(req)
+    const { browser, cpu, device, engine, os } = userAgent(agent)
     const lang = req.headers.get('accept-language')
     const referer = req.headers.get('referer')
 
@@ -36,7 +39,7 @@ export function logUser(req: Request) {
       host: req.url,
       region,
       deployment,
-      agent: {raw: agent, browser, cpu, device, engine, os},
+      agent: { raw: agent, browser, cpu, device, engine, os },
       lang,
       referer,
     }
@@ -53,7 +56,7 @@ function ingest(data: any, caller: string) {
     console.log(data)
   }
 
-  const {ingestionUrl, key} = getIngestor(host)
+  const { ingestionUrl, key } = getIngestor(host)
   fetchAndForget(ingestionUrl, key, data)
 }
 
@@ -74,11 +77,11 @@ function getContext(req: Request) {
   const region = Deno.env.get('DENO_REGION') ?? 'unknown'
   const deployment = Deno.env.get('DENO_DEPLOYMENT_ID') ?? 'unknown'
   const agent = req.headers.get('User-Agent') ?? 'unknown'
-  return {region, deployment, agent}
+  return { region, deployment, agent }
 }
 
 function fetchAndForget(
-  axiomUrl,
+  axiomUrl: string,
   key: string,
   data: { agent: any; host: any; region: string; deployment: string },
 ) {

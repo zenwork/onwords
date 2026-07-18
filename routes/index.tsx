@@ -1,6 +1,9 @@
 import {asset, Head}              from '$fresh/runtime.ts'
 import {HandlerContext, Handlers} from '$fresh/server.ts'
-import {logUser}                  from './axiomLogger.ts'
+import {logUser}                  from '../lib/axiomLogger.ts'
+
+
+
 
 const denoDeployUrl = /https:\/\/(www\.)?onwords\.ch(\/|\/index.html)?/
 const oneHour = 3_600_000
@@ -8,7 +11,7 @@ export const handler: Handlers = {
   async GET(_req: Request, ctx: HandlerContext) {
     logUser(_req)
     const resp = await ctx.render()
-    resp.headers.set('Cache-Control', `max-age=${oneHour}}`)
+    resp.headers.set('Cache-Control', `max-age=${oneHour}`)
     return resp
   },
 }
@@ -19,7 +22,7 @@ export default function Home(request: Request) {
       <Head>
         <link
           rel="apple-touch-icon"
-          sizes="180x180"
+          sizes='180x180'
           href="favicon/apple-touch-icon.png"
         />
         <link
@@ -45,7 +48,7 @@ export default function Home(request: Request) {
           content="editing, copy, proofreading, line, wordsmith, presentation, advertising, marketing, CV, academic, paper, commercial"
           name="keywords"
         />
-        {denoDeployUrl.test(request.url.href)
+        {denoDeployUrl.test(request.url)
          ? <meta content="index, follow" name="robots"/>
          : <meta content="noindex, nofollow" name="robots"/>}
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
@@ -56,7 +59,7 @@ export default function Home(request: Request) {
 
         <link rel="stylesheet" type="text/css" href={asset('./base.css')}/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
         <link
           href="https://fonts.googleapis.com/css2?family=Assistant&family=Courier+Prime&family=Yanone+Kaffeesatz&display=swap"
           rel="stylesheet"
@@ -85,17 +88,13 @@ export default function Home(request: Request) {
         </section>
         <section style="border:none">
           <p>
-            When I edit, my goal is always to bring out the true meaning of the text. I find the most precise words so that you
-            as the
-            writer say exactly what you want to say. I use my language skills (German and French), English as a Second Language
-            teaching
-            experience, and natural empathy to understand what you mean, and write it the way you would have wanted to: clearly,
-            correctly,
+            When I edit, my goal is always to bring out the true meaning of the text. I find the most precise words so that you as the
+            writer say exactly what you want to say. I use my language skills (German and French), English as a Second Language teaching
+            experience, and natural empathy to understand what you mean, and write it the way you would have wanted to: clearly, correctly,
             and a pleasure to read.
           </p>
           <p>
-            When I proofread, I let my love of perfection guide me. I’m detail oriented, and in proofreading the details are
-            everything. I
+            When I proofread, I let my love of perfection guide me. I’m detail oriented, and in proofreading the details are everything. I
             can't guarantee perfection, but it's always my aim.
           </p>
         </section>
@@ -110,10 +109,8 @@ export default function Home(request: Request) {
             You know what you want to express. I make sure that message gets across to your readers, clients, and customers.
           </p>
           <p>
-            Whether English is your first, second, or sixth language, you know the importance of choosing the right words to say
-            what you
-            mean. As an experienced EFL teacher and Toastmaster, English editor, and voracious reader, I can find those right
-            words.
+            Whether English is your first, second, or sixth language, you know the importance of choosing the right words to say what you
+            mean. As an experienced EFL teacher and Toastmaster, English editor, and voracious reader, I can find those right words.
           </p>
           <p>
             On Words is a one-woman team, offering you the personal service you and your message deserve.
@@ -127,10 +124,8 @@ export default function Home(request: Request) {
             <li>Academic papers</li>
           </ul>
           <p>
-            Are you launching your business? Are you applying for your dream job? Are you submitting your PhD thesis or applying
-            for a
-            grant? You know you've got what it takes to succeed &mdash;don't let grammar or spelling mistakes lessen your
-            chances.
+            Are you launching your business? Are you applying for your dream job? Are you submitting your PhD thesis or applying for a
+            grant? You know you've got what it takes to succeed &mdash;don't let grammar or spelling mistakes lessen your chances.
           </p>
         </section>
         <section>
@@ -140,10 +135,8 @@ export default function Home(request: Request) {
             <li>advertising</li>
           </ul>
           <p>
-            On Words can help you wherever words matter to your audience &mdash; whether it is to copy-edit the English version
-            of your web
-            site, improve the PowerPoint slides for your next presentation, or make sure your marketing slogans are not lost in
-            translation.
+            On Words can help you wherever words matter to your audience &mdash; whether it is to copy-edit the English version of your web
+            site, improve the PowerPoint slides for your next presentation, or make sure your marketing slogans are not lost in translation.
             No job is too small because every word counts.
           </p>
         </section>
@@ -167,7 +160,7 @@ export default function Home(request: Request) {
           <h2>Find me</h2>
           <ul>
             <li>
-              <a href="https://www.facebook.com/allison.turner.5011">
+              <a href='https://www.facebook.com/allison.turner.5011'>
                 on facebook
               </a>
             </li>
