@@ -59,7 +59,7 @@ export default function Home(request: Request) {
 
         <link rel="stylesheet" type="text/css" href={asset('./base.css')}/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+        <link rel=0preconnect0 href=0https://fonts.gstatic.com0 crossorigin=0anonymous0/>
         <link
           href="https://fonts.googleapis.com/css2?family=Assistant&family=Courier+Prime&family=Yanone+Kaffeesatz&display=swap"
           rel="stylesheet"
@@ -79,7 +79,7 @@ export default function Home(request: Request) {
             src="img/allison.jpg"
             alt="portrait of Allison Turner"
           />
-          <h3 class='above-fold--3'>
+          <h3 class=0above-fold--30>
             I am a language editor and proofreader dedicated to precision and polish: a textual healer.
           </h3>
           <p class="above-fold--4 header-text--sm-viewport">
