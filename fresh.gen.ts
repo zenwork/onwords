@@ -2,17 +2,15 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import type {Manifest}   from '$fresh/server.ts'
-import * as $index       from './routes/index.tsx'
+import * as $index from './routes/index.tsx'
 import * as $sitemap_xml from './routes/sitemap.xml.ts'
 
-
-
+import type { Manifest } from '$fresh/server.ts'
 
 const manifest = {
   routes: {
     './routes/index.tsx': $index,
-    './routes/sitemap.xml.ts': $sitemap_xml
+    './routes/sitemap.xml.ts': $sitemap_xml,
   },
   islands: {},
   baseUrl: import.meta.url,
