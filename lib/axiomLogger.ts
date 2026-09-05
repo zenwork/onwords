@@ -1,4 +1,4 @@
-import userAgent from 'user-agent'
+import {UAParser as userAgent} from 'user-agent'
 
 
 
