@@ -6,7 +6,7 @@ import {logUser}                  from '../lib/axiomLogger.ts'
 
 
 const denoDeployUrl = /https:\/\/(www\.)?onwords\.ch(\/|\/index.html)?/
-const oneHour = 3_600_000
+const oneHour = 3_600
 export const handler: Handlers = {
   async GET(_req: Request, ctx: HandlerContext) {
     logUser(_req)
