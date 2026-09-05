@@ -1,4 +1,12 @@
 {
+  "deploy": {
+    "install": "deno install",
+    "build": "deno task build",
+    "runtime": {
+      "type": "static",
+      "cwd": "./_site"
+    }
+  },
   "imports": {
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/",
     "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.15.7/"
