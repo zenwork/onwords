@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#285c69">
     <title>{{ title }} · {{ site.title }}</title>
     <meta name="description" content="{{ description || site.description }}">
     <link rel="canonical" href="{{ site.url }}{{ url }}">
@@ -20,25 +21,66 @@
     <link rel="stylesheet" href="/base.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
-    <header class="site-header">
-      <a class="wordmark" href="/" aria-label="On Words home">On <span>Words</span></a>
-      <nav aria-label="Primary navigation">
-        <a href="/services/">Services</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Journal</a>
-        <a class="nav-cta" href="mailto:{{ site.email }}">Get in touch</a>
-      </nav>
-    </header>
-    <main id="content">{{ content |> safe }}</main>
-    <footer class="site-footer">
-      <p class="wordmark">On <span>Words</span></p>
-      <p>English editing and proofreading, Switzerland.</p>
-      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-      <p class="copyright">© 2014–2026 On Words. All rights reserved.</p>
-    </footer>
+    <div class="shell">
+      {{ if url === '/' }}
+      <header class="site-header">
+        <div class="rule rule--coral"></div>
+        <div class="masthead">
+          <a class="masthead-logo" href="/" aria-label="On Words home">
+            <svg width="56" height="56" viewBox="0 0 180 180" role="img" aria-label="On Words">
+              <defs>
+                <mask id="ko-home" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180">
+                  <rect x="0" y="0" width="180" height="180" fill="#fff"/>
+                  <text x="11.34" y="115.8" fill="#000" font-family="Space Grotesk" font-weight="700" font-size="121.1" letter-spacing="3.6">On</text>
+                  <text x="15.7" y="148.9" fill="#000" font-family="Space Grotesk" font-weight="700" font-size="33" textLength="147.3" lengthAdjust="spacing">words</text>
+                </mask>
+              </defs>
+              <rect x="0" y="0" width="180" height="180" fill="#e78670" mask="url(#ko-home)"/>
+              <rect x="8.5" y="8.5" width="163" height="163" fill="none" stroke="#f7f4ea" stroke-width="3.2"/>
+            </svg>
+          </a>
+          <ul class="masthead-meta">
+            <li>English editing · Switzerland</li>
+            <li>{{ site.author }}</li>
+            <li>Est. 2014</li>
+          </ul>
+        </div>
+        <div class="rule rule--ink"></div>
+        <nav class="site-nav site-nav--home" aria-label="Primary navigation">
+          <a href="/services/">Services</a>
+          <a href="/about/">About</a>
+          <a href="/blog/">Journal</a>
+          <a class="nav-cta" href="mailto:{{ site.email }}">Get in touch</a>
+        </nav>
+        <div class="rule--edge"></div>
+      </header>
+      {{ else }}
+      <header class="site-header">
+        <div class="rule rule--coral-thin"></div>
+        <div class="inner-header-row">
+          <a class="wordmark" href="/">On Words</a>
+          <nav class="site-nav site-nav--inner" aria-label="Primary navigation">
+            <a href="/services/"{{ if url.startsWith('/services/') }} aria-current="page"{{ /if }}>Services</a>
+            <a href="/about/"{{ if url.startsWith('/about/') }} aria-current="page"{{ /if }}>About</a>
+            <a href="/blog/"{{ if url.startsWith('/blog/') }} aria-current="page"{{ /if }}>Journal</a>
+            <a class="nav-cta" href="mailto:{{ site.email }}">Get in touch</a>
+          </nav>
+        </div>
+        <div class="rule--edge"></div>
+      </header>
+      {{ /if }}
+      <main id="content"{{ if url === '/' }} class="home"{{ /if }}>{{ content |> safe }}</main>
+      <footer class="site-footer">
+        <div class="rule rule--hairline"></div>
+        <div class="footer-row">
+          <span>© 2014–2026 On Words, Switzerland. All rights reserved.</span>
+          <span class="footer-links"><a href="{{ site.social.linkedin }}">LinkedIn</a><a href="{{ site.social.facebook }}">Facebook</a></span>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

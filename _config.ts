@@ -11,7 +11,24 @@ const site = lume({
   location: new URL('https://onwords.ch'),
 })
 
-site.ignore('.github', '.git', '.agents', '.codex', 'tests', 'lib', 'AGENTS.md', 'README.md', 'LICENSE', 'plan.md', 'deno.json', 'deno.lock')
+site.ignore(
+  '.github',
+  '.git',
+  '.agents',
+  '.codex',
+  '.claude',
+  '.idea',
+  'tests',
+  'lib',
+  'AGENTS.md',
+  'README.md',
+  'LICENSE',
+  'plan.md',
+  'deno.json',
+  'deno.lock',
+  'design_handoff_onwords_redesign',
+  'Onwords website redesign.zip',
+)
 site.copy('static', '.')
 site.use(sitemap())
 site.use(feed({
