@@ -1,13 +1,19 @@
 {
-  "tasks": {
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "build": "deno run -A dev.ts build",
-    "preview": "deno run -A main.ts"
+  "imports": {
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/",
+    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.15.7/"
   },
-  "importMap": "./import_map.json",
+  "tasks": {
+    "lume": "deno run --allow-read --allow-write --allow-net --allow-env --allow-sys=networkInterfaces lume/cli.ts",
+    "build": "deno task lume",
+    "serve": "deno run --allow-read --allow-write --allow-net --allow-env serve.ts",
+    "start": "deno task serve",
+    "cms": "deno run --allow-read --allow-write --allow-net --allow-env --allow-run --allow-sys=networkInterfaces cms.ts",
+    "cms:github": "deno task lume --serve",
+    "test": "deno test --allow-read --allow-write --allow-run --allow-net"
+  },
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "types": ["lume/types.ts"]
   },
   "fmt": {
     "options": {
@@ -21,7 +27,7 @@
   },
   "lint": {
     "rules": {
-        "exclude": ["no-explicit-any", "no-import-prefix"]
+      "exclude": ["no-explicit-any", "no-import-prefix"]
     }
   }
 }

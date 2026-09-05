@@ -1,0 +1,11 @@
+---
+layout: layouts/base.vto
+---
+<article class="post shell prose">
+  <p class="eyebrow">Journal</p>
+  <h1>{{ title }}</h1>
+  <p class="post-meta"><time datetime="{{ date.toISOString() }}">{{ date.toLocaleDateString('en-CH', { year: 'numeric', month: 'long', day: 'numeric' }) }}</time></p>
+  {{ if image }}<img class="post-image" src="{{ image }}" alt="">{{ /if }}
+  {{ content |> safe }}
+  {{ if tags }}<p class="tags">{{ for tag of tags }}<span>{{ tag }}</span>{{ /for }}</p>{{ /if }}
+</article>

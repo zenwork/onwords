@@ -1,0 +1,22 @@
+name: Verify site
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - run: deno lint
+      - run: deno check _config.ts _cms.ts
+      - run: deno task build
+      - run: deno test --allow-read --allow-write --allow-run --allow-net
+      - run: git diff --check
